@@ -5,17 +5,14 @@ var jsonParser = bodyParser.json()
 var RoomService = require("../services/RoomService")
 var db = require("../models");
 var roomService = new RoomService(db);
-
 /* GET rooms listing. */
 router.get('/:hotelId', async function(req, res, next) {
   const rooms =  await roomService.getHotelRooms(req.params.hotelId);
-  rooms.map(room => room.User = room.Users.filter(user => user.id == 1).length > 0)
   res.render('rooms', { rooms: rooms });
 });
 
 router.get('/', async function(req, res, next) {
     const rooms = await roomService.get();
-    rooms.map(room => room.Users = room.Users.filter(user => user.id == 1).length > 0)
     res.render('rooms', { rooms: rooms });
 });
 
