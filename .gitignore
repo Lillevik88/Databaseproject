@@ -4,3 +4,10 @@ node_modules
 .DS_Store
 .linthtmlrc.json
 sessions
+ADMIN_USERNAME = "padmin"
+ADMIN_PASSWORD = "P@ssw0rd"
+DATABASE_NAME = "newprojectdatabase"
+DIALECT = "mysql"
+DIALECTMODEL = "mysql2"
+PORT = "3000"
+HOST = "localhost"
