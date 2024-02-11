@@ -12,7 +12,7 @@ class HotelService {
                 Name: name,
                 Location: location
             }
-        )
+        ) 
     }
 
     async get() {
@@ -30,13 +30,19 @@ class HotelService {
                 model: this.User,
                 through: {
                     attributes: ['Value']
-                }
+                }            
             },
         });
         hotel.avg = hotel.Users.map(x => x.Rate.dataValues.Value)
                                .reduce((a, b) => a + b, 0) / hotel.Users.length;
         hotel.rated = hotel.Users.filter(x=> x.dataValues.id == 1).length > 0;
         return hotel
+    }
+    
+    async deleteHotel(hotelId) {
+        return this.Hotel.destroy({
+            where: {id: hotelId}
+        })
     }
 
     async makeARate(userId, hotelId, value) {
@@ -46,13 +52,7 @@ class HotelService {
                 HotelId: hotelId,
                 Value: value
             }
-        )
-    }
-
-    async deleteHotel(hotelId) {
-        return this.Hotel.destroy({
-            where: {id: hotelId}
-        })
+        ) 
     }
 }
 module.exports = HotelService;

@@ -1,5 +1,5 @@
 var express = require('express');
-var router = express. Router();
+var router = express.Router();
 var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 var RoomService = require("../services/RoomService")
@@ -25,13 +25,13 @@ router.post('/', jsonParser, async function(req, res, next) {
 });
 
 router.post('/reservation', jsonParser, async function(req, res, next) {
-  let userId = req.body.UserId;
-  let roomId = req.body.RoomId;
-  let startDate = req.body.StartDate;
-  let endDate = req.body.EndDate;
-  await roomService.rentARoom(userId, roomId, startDate, endDate);
-  res.end()
-});
+    let userId = req.body.UserId;
+    let roomId = req.body.RoomId;
+    let startDate = req.body.StartDate;
+    let endDate = req.body.EndDate;
+    await roomService.rentARoom(userId, roomId, startDate, endDate);
+    res.end()
+  });
 
 router.delete('/', jsonParser, async function(req, res, next) {
   let id = req.body.id;
